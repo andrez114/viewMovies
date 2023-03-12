@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
 
   const [movies, setMovie] = useState([]);
   const movieCollectionRef = collection(db, "peliculas");
-  const queryMovie = query(movieCollectionRef, orderBy("titulo"), limit(10));
+  const queryMovie = query(movieCollectionRef, orderBy("titulo"), limit(20));
 
   useEffect(() => {
     const getMovies = async () => {
