@@ -18,6 +18,9 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
+  orderBy,
+  limit,
+  query,
 } from "firebase/firestore";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 export const authContext = createContext();
@@ -36,10 +39,11 @@ export function AuthProvider({ children }) {
 
   const [movies, setMovie] = useState([]);
   const movieCollectionRef = collection(db, "peliculas");
+  const queryMovie = query(movieCollectionRef, orderBy("titulo"), limit(10));
 
   useEffect(() => {
     const getMovies = async () => {
-      onSnapshot(movieCollectionRef, (snapshot) => {
+      onSnapshot(queryMovie, (snapshot) => {
         setMovie(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       });
     };

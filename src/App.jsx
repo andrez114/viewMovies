@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
+import { HomeUser } from "./components/HomeUser";
 import { Login } from "./components/Login";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Register } from "./components/Register";
@@ -12,13 +13,14 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={
               <ProtectedRoute>
-                <Home />
+                <HomeUser />
               </ProtectedRoute>
             }
           />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/resetPassword" element={<ResetPassword />}></Route>

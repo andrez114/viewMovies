@@ -21,7 +21,7 @@ export function Login() {
     setEror("");
     try {
       await login(user.email, user.password);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setEror(error.message);
     }
@@ -30,7 +30,7 @@ export function Login() {
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       setEror(error.message);
     }
@@ -84,12 +84,12 @@ export function Login() {
           <button className="bg-cyan-600 hover:bg-cyan-800 text-white text-sm font-bold py-2 px-2 rounded-lg focus:outline focus:shadow-outline ">
             Iniciar
           </button>
-          <a
-            href="/resetPassword"
+          <Link
+            to="/resetPassword"
             className="inline-block align-baseline font-bold text-sm text-white hover:text-cyan-700"
           >
             ¿Olvidaste tu contraseña?
-          </a>
+          </Link>
         </div>
       </form>
 
